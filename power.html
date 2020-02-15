@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Power</title>
+        <meta charset="utf-8">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+        <script type="text/javascript" src="js/jquery-3.4.0.min.js">
+        </script>
+        <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/power.js"></script>
+    
+        <script>
+            $(document).ready(function() {
+                $("#id").click(function(){
+                    $("id").toggleClass('class');
+                })
+            })  
+
+            $(document).bind('mousemove', function(e){
+                $('.hoverimg').css({
+                    left: e.pageX,
+                    top: e.pageY
+                });
+            });
+            
+            $(document).bind('mousemove', function(e){
+                $('.hovertext').css({
+                    left: e.pageX,
+                    top: e.pageY
+                });
+            });
+        </script> 
+    </head>
+    
+<!--    NAVIGATION-->
+   <section id="nav">
+       <h2 class="menu" id="quality"><a href="quality.html" onmouseover="select_quality();" onmouseout="select_quality_2();">Quality</a></h2>
+       
+        <h2 class="menu" id="represent"><a href="represent.html" onmouseover="select_represent();" onmouseout="select_represent_2();">Representation</a></h2>
+        
+        <h2 class="menu" id="learn"><a href="learn.html" onmouseover="select_learn();" onmouseout="select_learn_2();">Education</a></h2>
+        
+        <h2 class="menu" id="power"><a href="power.html" onmouseover="select_power();" onmouseout="select_power_2();">Power</a></h2>
+        
+        <h2 class="menu" id="social"><a href="social.html" onmouseover="select_social();" onmouseout="select_social_2();">Community</a></h2>
+        
+        <h2 class="menu" id="change"><a href="change.html" onmouseover="select_change();" onmouseout="select_change_2();">Change</a></h2>
+    </section>
+
+<!--   ABOUT THIS PROJECT-->
+    <div id="sidepagemain" class="sidepage">
+          <a href="javascript:void(0)" class="closenav" onclick="closeNav()">&times;</a>
+          
+          <div class="side_links">
+              <a onclick="showProject();" onmouseover="about_project();" onmouseout="about_project2()"><h2 id="project_link">Project</h2></a>
+              
+              <a onclick="showMethod();" onmouseover="about_method();" onmouseout="about_method2()"><h2 id="method_link" >Method</h2></a>
+              
+              <a onclick="showAbout();" onmouseover="about_us();" onmouseout="about_us2()"><h2 id="about_link">About Us</h2></a>
+          </div>
+          
+          <div class="side_content">
+              <div id="project">
+                <h1>
+                    Our data comes from the <a href="https://designcensus.org/" target="_blank">2019 AIGA Design Census &#8599</a>, which surveys design professionals across the country about their salary, job satisfaction, future outlook, etc. Looking at the dataset, we were drawn to the question “What critical issues face design?” where we found a hidden gem: while respondents could choose from multiple-choice answers, <span id="italic">they could also write-in their own answers!</span>
+                </h1>
+                
+                <h1>
+                    It was in the 2700+ written responses we found the “core” of the respondents’ feelings: honesty, frustration, skepticism, and hope. As direct quotes, these words were personal in a way that the more discrete data was not. We wanted to use this corpus to tell a story, to see data points as people, and not as numbers.
+                </h1>
+                
+                <h1>
+                    This project exists in two forms: an exploratory website, and a printed, interactive book. We designed both of these artifacts as tools for data exploration, but specifically, exploration that <span id="italic">begins with language.</span>
+                </h1>
+                
+                <small>
+                    Created for Communications Studio IV at CMU School of Design, Spring 2020. <br>Advised by prof. Kyuha Shim.
+                </small>
+                
+              </div>
+
+              <div id="method">
+                <h1 style="font-family:'principal_trialbold'; ">Parsing Through Data</h1>
+                
+                <h1>
+                    We used python and NLTK to parse the corpus, collecting the most frequent 150 words (excluding function words like “I,” “the,” “only,” etc.), bi-grams and tri-grams. Looking at the lists, we picked out words and phrases that described themes or ideas. From there, we grouped the words into six broader categories: power, representation, education, quality, change, and community.
+                </h1>
+                <h1>
+                    We used these dictionaries to parse through the quotes again in order to sort which responses fell in which category.
+                </h1>
+                
+                <h1 style="font-family:'principal_trialbold'; ">Category Briefs</h1>
+                
+                <div class="categories">
+                    <div id="category_text">
+                        <h6>Power</h6>
+                        <small>"color", "white", "money", "pay", "in leadership", "of color", "of diversity"</small>
+                    </div>
+
+                    <div id="category_text">
+                        <h6>Representation</h6>
+                        <small>"ageism", "diversity", "of diversity", "women", "woman", "standards", "a seat", "of respect for"</small>
+                    </div>
+
+                    <div id="category_text">
+                        <h6>Education</h6>
+                        <small>"education", "students", "school", "design education", "young designers"</small>
+                    </div>
+                    
+                    <div id="category_text">
+                        <h6>Quality</h6>
+                        <small>"good design",  "value", "lack", "understanding", "the quality of", "time"</small>
+                    </div>
+
+                    <div id="category_text">
+                        <h6>Change</h6>
+                        <small>"environmental", "ethics", "ethical", "future", "climate change", "to change the", "impact"</small>
+                    </div>
+
+                    <div id="category_text">
+                        <h6>Community</h6>
+                        <small>"social media", "the real world", "community", "design communities", "the general public"</small>
+                    </div>
+                
+                <img src="Images/dictionary-parsing.png">
+                <p>The code did not account for responses that didn’t match any of the dictionaries, and did not tag if a response falls into multiple categories, so we had to do that manually later on.</p>
+                
+                <h1>
+                    This site is a prototype of a bigger collection, because we couldn’t integrate all 2700+ quotes. We selected ~25 quotes per category to analyze further, and picked phrases that described the main point or theme of each response. If quotes intersected with other categories, we made sure to highlight those phrases as well. (And we made a super sexy color-coded <a href="https://docs.google.com/spreadsheets/d/15In8OSasHoC0KUkLolkmvFJeyXUj2fERDnqrUyhqZAM/edit?usp=sharing" target="_blank">spreadsheet &#8599</a> ) To find spot words (eg. 18 mentions of “age-ism”), we ran word frequency throughwith the entire corpus.
+                </h1>
+                
+                </div> 
+              </div>
+
+              <div id="about">
+                  <h1>
+                      <a href="https://jaclynsaik.myportfolio.com/" target="_blank">Jaclyn Saik &#8599</a> is a Junior studying Communication Design, with a minor in HCI at Carnegie Mellon University, who can often be found talking about the coffee she’s drinking or drawing with crayons. She believes the most critical issue facing design is maintaining individuality and human qualities in an increasingly automated world.    
+                  </h1>
+                  
+                  <div class="about_bio">
+                    <div id="age">
+                        <h6>Age</h6>
+                        <small id="q_age">21</small>
+                    </div>
+
+                    <div id="identity">
+                        <h6>Identity</h6>
+                        <small id="q_identity">White Female</small>
+                    </div>
+
+                    <div id="location">
+                        <h6>Location</h6>
+                        <small id="q_location">Mountain View, CA</small>
+                    </div>
+
+                    <div id="industry">
+                        <h6>Industry</h6>
+                        <ul id="q_industry">Student</ul>
+                    </div>
+                </div> 
+                
+                <div class="clear"></div>
+                
+                <h1>
+                 <a href="https://rachelwtlee.com/" target="_blank">Rachel Lee &#8599</a> is a Junior majoring in Communication Design and HCI at Carnegie Mellon University, who can often be found eating eggs or doing pilates. She believes the most critical issue facing design is instilling passion and desire in designers to create positive change for the world. 
+
+                 </h1>
+                  
+                  <div class="about_bio">
+                    <div id="age">
+                        <h6>Age</h6>
+                        <small id="q_age">20</small>
+                    </div>
+
+                    <div id="identity">
+                        <h6>Identity</h6>
+                        <small id="q_identity">Asian Female</small>
+                    </div>
+
+                    <div id="location">
+                        <h6>Location</h6>
+                        <small id="q_location">Hong Kong, <br> Hong Kong SAR</small>
+                    </div>
+
+                    <div id="industry">
+                        <h6>Industry</h6>
+                        <ul id="q_industry">Student</ul>
+                    </div>
+                </div>
+                
+                <div class="clear"></div>
+                
+                <h1>
+                     <a href="https://alicefang.me/" target="_blank">Alice Fang &#8599</a> is a Junior studying Communication Design, with a minor in Professional Writing at Carnegie Mellon University, who can often be found watching Netflix docu-series or playing sudoku. She believes the most critical issue facing design is being understanding and empathetic in an increasingly divisive environment.
+                 </h1>
+                  
+                  <div class="about_bio">
+                    <div id="age">
+                        <h6>Age</h6>
+                        <small id="q_age">20</small>
+                    </div>
+
+                    <div id="identity">
+                        <h6>Identity</h6>
+                        <small id="q_identity">Asian Female</small>
+                    </div>
+
+                    <div id="location">
+                        <h6>Location</h6>
+                        <small id="q_location">Edison, NJ</small>
+                    </div>
+
+                    <div id="industry">
+                        <h6>Industry</h6>
+                        <small id="q_industry">Student</small>
+                    </div>
+                </div>
+    
+              </div>
+          </div>
+    </div>
+
+    <span onclick="openNav()"><h2 id="about_text">about this project</h2></span>
+<!--ABOUT THIS PROJECT END-->
+        
+    <!--        STICKY NOTE-->
+       <aside>
+        <div class="section_intro drag" style="background-color: #FF8078;" id="Bar">
+            <div id="close">
+                <a href="#" onclick="Hide(Bar);">&times;</a>
+            </div>
+            <h1>Power</h1>
+            <p>
+                Who sits in a position of power? What can design leadership say about the industry itself?
+            </p>
+        </div>
+    </aside>
+    
+    <body>
+    <div id="page_container">
+    
+<!--       QUOTES LIST-->
+
+        <section class="quotes_list">
+           
+<!--           MICRO QUOTE 1-->
+            <div id="quote_list_text"> 
+                <p id="micro1"><a onclick="showquote1();">"It's run by old white people..."</a></p>
+            </div>
+
+<!--          MICRO QUOTE 2-->
+            <div id="quote_list_text"> 
+                <p id="micro2"><a onclick="showquote2();">"As a woman in tech, I still want to see not just more women but more of the "other"...."</a></p>
+            </div>
+
+
+<!--          MICRO QUOTE 3-->
+           <div id="quote_list_text">
+                <p id="micro3"><a onclick="showquote3();">"For me personally, it's diversity on the teams I'm in..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 4-->
+           <div id="quote_list_text">
+                <p id="micro4"><a onclick="showquote4();">"Most of the great designers working today are ignored or completely unknown..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 5-->
+           <div id="quote_list_text">
+                <p id="micro5"><a onclick="showquote5();">"I don't think designers talk enough about how straining the "paid for time" client services model is..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 6-->
+           <div id="quote_list_text">
+                <p id="micro6"><a onclick="showquote6();">"Older designers are not respected for what they bring to the table..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 7-->
+           <div id="quote_list_text">
+                <p id="micro7"><a onclick="showquote7();">"The biggest issue I see is a lack of understanding of what design leadership is capable of contributing..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 8-->
+           <div id="quote_list_text">
+                <p id="micro8"><a onclick="showquote8();">"I see marketing professionals having control over what design should look like..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 9-->
+           <div id="quote_list_text">
+                <p id="micro9"><a onclick="showquote9();">"Not getting paid for the level of experience..."</a></p>
+            </div>
+
+            <!--MICRO QUOTE 10-->
+           <div id="quote_list_text">
+                <p id="micro10"><a onclick="showquote10();">"I think since there is no definite way to measure design, the pay scale is completely arbitrary..."</a></p>
+            </div>
+
+<!--            MICRO QUOTE 11-->
+           <div id="quote_list_text">
+                <p id="micro11"><a onclick="showquote11();">"Design doesn't know how its influencing society and the environment..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 12-->
+           <div id="quote_list_text">
+                <p id="micro12"><a onclick="showquote12();">"We are pitting ourselves against each other..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 13-->
+           <div id="quote_list_text">
+                <p id="micro13"><a onclick="showquote13();">"Ethics in design is huge and needs to be the top priority in the industry..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 14-->
+           <div id="quote_list_text">
+                <p id="micro14"><a onclick="showquote14();">"Lack of accountability, especially in large tech companies..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 15-->
+           <div id="quote_list_text">
+                <p id="micro15"><a onclick="showquote15();">Issue: the lack of transparency creative staffing agencies show to freelance designers (and clients)..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 16-->
+           <div id="quote_list_text">
+                <p id="micro16"><a onclick="showquote16();">"The world could be so much better if we had the means to improve people's lives who need it the most..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 17-->
+           <div id="quote_list_text">
+                <p id="micro17"><a onclick="showquote17();">"As a poc, white managers and directors make it miserable and hurtful to work in the industry..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 18-->
+           <div id="quote_list_text">
+                <p id="micro18"><a onclick="showquote18();">"Design has become a highly corporate, sterile field when it is just as creatively impactful as the fine art space..."</a></p>
+            </div>
+        
+<!--           MICRO QUOTE 19-->
+           <div id="quote_list_text">
+                <p id="micro19"><a onclick="showquote19();">"A lack of proper credit and attribution in social media..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 20-->
+           <div id="quote_list_text">
+                <p id="micro20"><a onclick="showquote20();">"How it affects our planet, and how we use it to continue to power and support the wheel of wasteful consumerist Western culture..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 21-->
+           <div id="quote_list_text">
+                <p id="micro21"><a onclick="showquote21();">"The lack of diversity in design / tech is paving the way for less accessible and inclusive designs..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 22-->
+           <div id="quote_list_text">
+                <p id="micro22"><a onclick="showquote22();">"The commoditization of design is shifting parts of the industry away from being a service..."</a></p>
+            </div>
+        
+        <!--           MICRO QUOTE 23-->
+           <div id="quote_list_text">
+                <p id="micro23"><a onclick="showquote23();">"Getting more state / government funding for US universities..."</a></p>
+            </div>
+            
+            <!--           MICRO QUOTE 24-->
+           <div id="quote_list_text">
+                <p id="micro24"><a onclick="showquote24();">"Instead of making any difference, designers spend their time making literal or digital noise and trash..."</a></p>
+            </div>
+
+<!--           MICRO QUOTE 25-->
+           <div id="quote_list_text">
+                <p id="micro25"><a onclick="showquote25();">"Some entities that could benefit from good communication and design in order to further their impact..."</a></p>
+            </div>
+        </section>
+        
+<!--        QUOTES MAGNIFIED-->
+        <section class="magnified">
+<!--          QUOTE 1-->
+           <div id="quote1" class="initial">
+              <h1>
+                  "It's run by <a onclick="showquote2();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">old <span class="hovertext"><p>264 people mention "white" as a key theme in design.</p></span><span id="italic">white</span> people</span></a> who <a href="https://eyeondesign.aiga.org/tre-seals-is-turning-typography-into-a-radical-act/" target="_blank"><span class="hoverimg"><img src="Images/aiga-eod.jpg"></span><span id="external">won't get out of the way &#8599"</span></a>
+              </h1>
+            </div>
+               
+            <!--          QUOTE 2-->
+            
+            <div id="quote2" class="initial">
+                <h1>
+                    "As a <a><span class="hovertext"><p>265 people mention "women" as a key theme in design.</p></span><span id="italic">woman</span></a> in <a><span class="hovertext"><p>280 people mention "tech" as a key theme in design.</p></span><span id="italic">tech</span></a>, I still want to see <a href="represent.html" onmouseover="select_represent();" onmouseout="select_represent_2();"><span  id="represent_highlight2">not just more women but more of the "other"</span></a><a href="https://eyeondesign.aiga.org/cutting-through-the-bullshit-heres-what-it-really-means-to-diversify-your-workplace/" target="_blank"><span class="hoverimg"><img src="Images/diversity-workplace.jpg"></span><span id="external"> ... trans, queer, non-binary, etc as well as people of color &#8599</span></a> I think there are perspectives and levels of <a><span class="hovertext"><p>208 people mention "ethics" as a key theme in design.</p></span><span id="italic">ethics</span></a> in design that could use an eye of <a onclick="showquote3();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">someone who isn't a cis <span class="hovertext"><p>264 people mention "white" as a key theme in design.</p></span><span id="italic">white</span> male.</span></a> Also the consequences of innovation is another issue ... often the way tech transforms our lives isn't considered until after the fact. Then we have to find solutions for problems we didn't have before."
+                </h1>
+                
+            </div>
+            
+            <!--            QUOTE 3-->
+            <div id="quote3" class="initial">
+                <h1>
+                    "For me personally, it's diversity on the teams I'm in. Most of the teams I was part of are <a onclick="showquote4();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">predominately <span class="hovertext"><p>264 people mention "white" as a key theme in design.</p></span><span id="italic">white</span></span></a> with similar design styles and perspectives [...] I understand having more females is one form of expanding <a><span class="hovertext"><p>545 people mention "diversity" as a key theme in design.</p></span><span id="italic">diversity</span></a>, but I would like to see more walks of designers sharing their expertise and experiences."   
+                </h1> 
+            </div>
+            
+            <!--        QUOTE 4-->
+           <div id="quote4" class="initial">
+               <h1>
+                   "Most of the great designers working today are  <a href="social.html" onmouseover="select_social();" onmouseout="select_social_2();"><span  id="social_highlight2">ignored or completely unknown, even within the design community,</span></a> if they don't have the propensity or inclination to gush about themselves on <a><span class="hovertext"><p>160 people mention "social media" as a key theme in design.</p></span><span id="italic">social media</span></a>, afford to travel to attend overpriced conferences, or participate in the pay-to-play world of design awards shows. <a onclick="showquote5();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">We shouldn't be relying on the loudest or most privileged voices among us to define our field."</span></a>
+                   </h1>
+            </div>
+            
+            <!--        QUOTE 5-->
+           <div id="quote5" class="initial">
+               <h1>
+                   "I don't think designers talk enough about how straining the "paid for time" client services model is. Creative agencies are being gobbled up by the McKinseys of the world. Meanwhile the survivors race to the bottom to do more work for less money, or in less time — and call that a "sprint." <a href="https://eyeondesign.aiga.org/this-is-what-starting-a-design-union-looks-like/" target="_blank"><span class="hoverimg"><img src="Images/eye-on-design-union-event-perrin.jpg"></span><span id="external">I think there are other ways to do business &#8599</span></a> <a onclick="showquote6();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">where creative people have greater ownership over the means of production."</span></a>
+               </h1>
+            </div>
+            
+            <!--        QUOTE 6-->
+           <div id="quote6" class="initial">
+               <h1>
+                   <a href="represent.html" onmouseover="select_represent();" onmouseout="select_represent_2();"><span  id="represent_highlight2">"Older designers</span></a> are <a onclick="showquote7();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">not <span class="hovertext"><p>190 people mention "respect" as a key theme in design.</p></span><span id="italic">respected</span> for what they bring to the table because we might not have the same technical skills as they do.</span></a> Young designers think it's all about the programs, the algorithms, the code. So many don't understand typography, nuance, balance, color. It is sad to me."
+               </h1>
+            </div>
+            
+            <!--        QUOTE 7-->
+           <div id="quote7" class="initial">
+               <h1>
+                   "When looking at in-house design, the biggest issue I see is a <a><span class="hovertext"><p>1061 people mention "lack of" as a key theme in design.</p></span><span id="italic">lack of </span></a><a><span class="hovertext"><p>355 people mention "understanding" as a key theme in design.</p></span><span id="italic">understanding</span></a> of what design leadership is capable of contributing [...]. What that says to me, is that companies just want a designer who they don't have to <a><span class="hovertext"><p>644 people mention "pay" as a key theme in design.</p></span><span id="italic">pay</span></a> a bunch of money to, and can execute on the company vision, without being a big contributor to it ... As far as agencies go, <a onclick="showquote8();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">design is often sacrificed for client relationships."</span></a>
+               </h1>
+            </div>
+              
+            <!--        QUOTE 8-->
+           <div id="quote8" class="initial">
+               <h1>
+                   "[...] I see marketing professionals having control over what design should look like, and having too much say in what a final design should be. <a onclick="showquote9();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">Marketing professionals do not understand design like designers do,</span></a> so it doesn't make sense to me why they would have a say in a design choice. [...] I also see marketing professionals not understanding just how important design is, and completely <a href="quality.html" onmouseover="select_quality();" onmouseout="select_quality_2();"><span  id="quality_highlight2">dismissing the importance and investment in <span class="hovertext"><p>173 people mention "good design" as a key theme in design.</p></span><span id="italic">good design</span> and good designers [...]"</span></a>
+                </h1>
+            </div>
+            
+            <!--        QUOTE 9-->
+           <div id="quote9" class="initial">
+               <h1>
+                   <a onclick="showquote10();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">"Not getting <span class="hovertext"><p>644 people mention "pay" as a key theme in design.</p></span><span id="italic">paid</span> for the level of experience.</span></a> Companies would rather consider a designer mid-level, than promote them and have to pay them a senior designer rate."
+               </h1>
+            </div>           
+            
+            <!--        QUOTE 10-->
+           <div id="quote10" class="initial">
+               <h1>
+                   "I think since there is <a href="quality.html" onmouseover="select_quality();" onmouseout="select_quality_2();"><span  id="quality_highlight2">no definite way to measure design,</span></a> the <a href="https://eyeondesign.aiga.org/the-trick-to-recession-proofing-your-design-practice-try-something-new/" target="_blank"><span class="hoverimg"><img src="Images/Money-1.gif"></span><span id="external"><span id="italic">pay</span> scale is completely arbitrary &#8599</span></a> and some rely on tenure vs. actual work quality. I have had <a onclick="showquote11();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">coworkers who were promoted just for their tenure</span></a> although their work and teamwork qualities were quite low. Also, people expect designers to look a certain way and since I don't fit that, people assume i'm not capable and/or not creative enough."
+               </h1>
+            </div>
+            
+            <!--        QUOTE 11-->
+           <div id="quote11" class="initial">
+               <h1>
+                   "Design doesn't know how its influencing <a href="change.html" onmouseover="select_change();" onmouseout="select_change_2();"><span  id="future_highlight2">society and the <span class="hovertext"><p>200 people mention "environment" as a key theme in design.</p></span><span id="italic">environment</span></span></a> [...] <a href="social.html" onmouseover="select_social();" onmouseout="select_social_2();"><span  id="social_highlight2">time spent in <span class="hovertext"><p>160 people mention "social media" as a key theme in design.</p></span><span id="italic">social apps</span> means less time spent with meaningful connections</span></a> [...] Designers are <a href="https://eyeondesign.aiga.org/what-would-happen-if-we-treated-democracy-equity-like-a-design-problem/" target="_blank"><span class="hoverimg"><img src="Images/WhatWouldHappen.jpg"></span><span id="external">taking a stand &#8599</span></a> to make <a><span class="hovertext"><p>208 people mention "ethics" as a key theme in design.</p></span><span id="italic">ethical</span></a> decisions because their <a onclick="showquote12();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">overlords won't give them the power."</span></a>
+               </h1>
+            </div>
+            
+            <!--        QUOTE 12-->
+           <div id="quote12" class="initial">
+               <h1>
+                   "We are pitting ourselves against each other through: the distinction and competition between graphic design as a whole and UX/UI design/visual design/web design/product design, which <a onclick="showquote13();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">creates a false hierarchy of <span class="hovertext"><p>825 people mention "value" as a key theme in design.</p></span><span id="italic">value</span>,</span></a> propping up some disciplines over others, that translates to not being valued by clients and workplaces; the gender pay gap; being a mostly white industry and therefore defaulting to a <a><span class="hovertext"><p>264 people mention "white" as a key theme in design.</p></span><span id="italic">white</span></a> pov in design."
+               </h1>
+            </div>
+            
+            <!--        QUOTE 13-->
+           <div id="quote13" class="initial">
+               <h1>
+                   <a href="change.html" onmouseover="select_change();" onmouseout="select_change_2();"><span  id="future_highlight2">"<span class="hovertext"><p>208 people mention "ethics" as a key theme in design.</p></span><span id="italic">Ethics</span> in design is huge and needs to be the top priority in the industry.</span></a> Marketing and advertising have long since been about manipulating consumer behaviors and the idea has crept into the experience design world. instead of giving people what they need we try to <a href="https://eyeondesign.aiga.org/deceptive-design-is-illegal-now-so-why-are-you-still-getting-swindled/" target="_blank"><span class="hoverimg"><img src="Images/marylou-faure-illustration.jpg"></span><span id="external">manipulate users desires and bend them &#8599</span></a> to what we're trying to sell them. <a onclick="showquote14();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">It's an insidious practice of controlling people hiding behind a mask</span></a> of "empowerment"."
+               </h1>
+            </div>
+            
+            <!--        QUOTE 14-->
+           <div id="quote14" class="initial">
+               <h1>
+                   <a href="change.html" onmouseover="select_change();" onmouseout="select_change_2();"><span  id="future_highlight2">"<span class="hovertext"><p>1061 people mention "lack of" as a key theme in design.</p></span><span id="italic">Lack of </span> accountability,</span></a> especially in large <a href="social.html" onmouseover="select_social();" onmouseout="select_social_2();"><span  id="social_highlight2">disproportionately powerful <span class="hovertext"><p>280 people mention "tech" as a key theme in design.</p></span><span id="italic">tech</span></span></a> companies. Giving too much emphasis to design without <a onclick="showquote15();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">honest assessments of impact."</span></a>
+               </h1>
+            </div>
+            
+            <!--        QUOTE 15-->
+           <div id="quote15" class="initial">
+               <h1>
+                   "Issue: the <a onclick="showquote16();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight"><span class="hovertext"><p>1061 people mention "lack of" as a key theme in design.</p></span><span id="italic">lack of</span> transparency</span></a> creative staffing agencies show to freelance designers (and clients). Agencies <a><span class="hovertext"><p>644 people mention "pay" as a key theme in design.</p></span><span id="italic">pay</span></a> designers 50% of what they charge the client, <a href="https://eyeondesign.aiga.org/its-time-for-graphic-design-to-embrace-the-radical-potential-of-salary-transparency-%f0%9f%92%b8/" target="_blank"><span class="hoverimg"><img src="Images/Salary-Transparecny.jpg"></span><span id="external">however our silence is demanded in their contracts &#8599</span></a> creating an ignorance that affects designers who start their own business [...]."
+               </h1>
+            </div>
+            
+           <!--        QUOTE 16-->
+           <div id="quote16" class="initial">
+               <h1>
+                   <a onclick="showquote17();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">" [...] Who we are designing for.</span></a> Most designers spend their careers designing for the rich [...] <a href="https://eyeondesign.aiga.org/for-designers-the-next-political-move-is-turning-words-into-action/" target="_blank"><span class="hoverimg"><img src="Images/NY_CITIZEN_DESIGNER_NOW.png"></span><span id="external">The world could be so much better &#8599</span></a> if we had the means to <a href="change.html" onmouseover="select_change();" onmouseout="select_change_2();"><span  id="future_highlight2">improve people's lives who need it the most.</span></a> Sadly those in the most need of great design often don't have the money to <a><span class="hovertext"><p>644 people mention "pay" as a key theme in design.</p></span><span id="italic">pay</span></a> us and so we whittle our talents away on the frivolous whims of the wealthy while the poor as always continue to suffer."
+               </h1>
+            </div>
+              
+            <!--        QUOTE 17-->
+           <div id="quote17" class="initial">
+               <h1>
+                   "As a <a><span class="hovertext"><p>88 people mention "person of color" as a key theme in design.</p></span><span id="italic">poc</span></a>, white managers and directors make it miserable and hurtful to work in the industry. I identify as Asian and <a href="represent.html" onmouseover="select_represent();" onmouseout="select_represent_2();"><span  id="represent_highlight2">I have had the worst last two years of my career of racial inequality</span></a> [...] Also, <a><span class="hovertext"><p>264 people mention "white" as a key theme in design.</p></span><span id="italic">white</span></a> people, please stop illustrating or designing things with "ethnic inspiration" and then not consult nor <a><span class="hovertext"><p>644 people mention "pay" as a key theme in design.</p></span><span id="italic">pay</span></a> anyone in that community. <a onclick="showquote18();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">"Pay these communities. Reparations in the design world need to be made."</span></a>
+               </h1>
+            </div>
+            
+            <!--        QUOTE 18-->
+           <div id="quote18" class="initial">
+               <h1>
+                   "Design has become a highly corporate, sterile field when it is just as creatively <a><span class="hovertext"><p>384 people mention "impact" as a key theme in design.</p></span><span id="italic">impactful</span></a> as the fine art space. This dynamic leads to <a onclick="showquote19();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">exploitation of young designers and artists</span></a> who know little about inter-industry dynamics and social expectation [...] The design field is also rife with folks who have no shame in stealing art from independent freelancers [...] rather than research and design their own. Accountability is needed."
+               </h1>
+            </div>  
+            
+                    <!--        QUOTE 19-->
+           <div id="quote19" class="initial">
+               <h1>
+                   <a onclick="showquote20();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">"A <span class="hovertext"><p>1061 people mention "lack of" as a key theme in design.</p></span><span id="italic">lack of </span> proper credit and attribution in <span class="hovertext"><p>1061 people mention "lack of" as a key theme in design. <br><br> 160 people mention "social media" as a key theme in design.</p></span><span id="italic">social media.</span></span></a> There are numerous "businesses" that are fraudulently getting ahead and making money of off other designer's work. <a href="social.html" onmouseover="select_social();" onmouseout="select_social_2();"><span  id="social_highlight2">The problem is especially rampant on Instagram."</span></a>
+               </h1>
+            </div>
+            
+                    <!--        QUOTE 20-->
+           <div id="quote20" class="initial">
+               <h1>
+                   "How it affects our planet, and how we use it to continue to <a onclick="showquote21();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">power and support the wheel of wasteful <span class="hovertext"><p>138 people mention "commoditization/ consumerism/ Capitalism" as a key theme in design.</p></span><span id="italic">consumerist</span> Western culture,</span></a> whose <a href="quality.html" onmouseover="select_quality();" onmouseout="select_quality_2();"><span  id="quality_highlight2">value has proven to be antithetical to the long term</span></a><a href="https://eyeondesign.aiga.org/navigating-the-dangers-of-mental-health-as-magazine-trend/" target="_blank"><span class="hoverimg"><img src="Images/nous-magazine.jpg"></span><span id="external">mental and physical health of people and the earth &#8599"</span></a>
+               </h1>
+            </div> 
+            
+                    <!--        QUOTE 21-->
+           <div id="quote21" class="initial">
+               <h1>
+                   "The <a><span class="hovertext"><p>1061 people mention "lack of" as a key theme in design.</p></span><span id="italic">lack of </span></a> diversity in design / <a><span class="hovertext"><p>280 people mention "tech" as a key theme in design.</p></span><span id="italic">tech</span></a> is paving the way for less accessible and inclusive designs to the point that it's making peoples' lives on a daily basis more toxic and difficult than it would be without technology. Additionally, in my career as a designer I have felt increasingly disposable [...] <a onclick="showquote22();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">I am paid less than a junior designer,</span></a> despite having 7 years of experience [...] It feels like the only way to be respected as a designer is to go into UI / UX or product design [...]"
+               </h1>
+            </div>
+            
+                    <!--        QUOTE 22-->
+           <div id="quote22" class="initial">
+               <h1>
+                   <a onclick="showquote23();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">"The <span class="hovertext"><p>138 people mention "commoditization/ consumerism/ Capitalism" as a key theme in design.</p></span><span id="italic">commoditization</span> of design</span></a> is shifting parts of the industry away from being a service, <a href="represent.html" onmouseover="select_represent();" onmouseout="select_represent_2();"> <span id="represent_highlight2"><span class="hovertext"><p>118 people mention "undervalue / devalue" as a key theme in design.</p></span><span id="italic">devaluing</span> the role of the designer as an individual,</span></a> and bringing down wages across the industry. Too many internships and first jobs are <a><span class="hovertext"><p>644 people mention "pay" as a key theme in design.</p></span><span id="italic">unpaid/ underpaid</span></a>. <a href="learn.html" onmouseover="select_learn();" onmouseout="select_learn_2();"><span  id="learn_highlight2">Pricing your work, and yourself, are not taught in design school.</span></a> <a href="change.html" onmouseover="select_change();" onmouseout="select_change_2();"><span  id="future_highlight2">"The commoditization of design. Transparency around a designers <span class="hovertext"><p>124 people mention "worth" as a key theme in design.</p></span><span id="italic">worth</span> helps everyone."</span></a>
+               </h1>
+            </div>     
+            
+               <!--        QUOTE 23-->
+           <div id="quote23" class="initial">
+               <h1>
+                   "In my position (as a full-time faculty member teaching in a design program), I think the major issue is <a onclick="showquote24();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">getting more state / government funding for US universities.</span></a> There has been a <a href="learn.html" onmouseover="select_learn();" onmouseout="select_learn2();"><span  id="learn_highlight2">systematic decline in funding for higher education for more than two decades."</span></a>
+               </h1>
+            </div> 
+            
+                   <!--        QUOTE 24-->
+           <div id="quote24" class="initial">
+               <h1>
+                   "<a><span class="hovertext"><p>189 people mention "freelance" as a key theme in design.</p></span><span id="italic">Freelancing</span></a> has been very eye opening. Self employment taxes are incredibly rough, and the inconsistency of freelancing work is making life very stressful. When I do work with clients, they don't understand the value of having illustrations and good branding, and they almost become hostile when they hear my prices. Being a small town, I can't work locally because <a onclick="showquote25();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">no one here wants to pay for quality work</span></a> because <a href="quality.html" onmouseover="select_quality();" onmouseout="select_quality_2();"><span  id="quality_highlight2">they fail to see the <span class="hovertext"><p>825 people mention "value" as a key theme in design.</p></span><span id="italic">value</span>."</span></a>
+               </h1>
+            </div>     
+            
+            <!--        QUOTE 25-->
+           <div id="quote25" class="initial">
+               <h1>
+                   "Some entities <a href="social.html" onmouseover="select_social();" onmouseout="select_social_2();"><span  id="social_highlight2">(e.g. nonprofits, community-based organizations)</span></a> that could benefit from good communication and design in order to further their <a><span class="hovertext"><p>384 people mention "impact" as a key theme in design.</p></span><span id="italic">impact</span></a> are also <a onclick="showquote25();" onmouseover="select_power();" onmouseout="select_power_2();"><span  id="power_highlight">not equipped to access it for financial reasons or <span class="hovertext"><p>1061 people mention "lack of" as a key theme in design.</p></span><span id="italic">lack of</span> awareness.</span></a> Wouldn't it be great if there were more programs [...] whose goal is to <a href="change.html" onmouseover="select_change();" onmouseout="select_change_2();"><span  id="future_highlight2">connect the organizations with the potential to do the most good</span></a> with design and branding professionals that could help them build awareness and achieve their missions?"
+               </h1>
+            </div>        
+            
+<!--BIO -->
+            <div class="bio", id="quote1_bio">
+                <div id="age">
+                    <h6>Age</h6>
+                    <small id="q_age">26</small>
+                </div>
+
+                <div id="identity">
+                    <h6>Identity</h6>
+                    <small id="q_identity">Black Female</small>
+                </div>
+
+                <div id="location">
+                    <h6>Location</h6>
+                    <small id="q_location">Austin, TX</small>
+                </div>
+
+                <div id="industry">
+                    <h6>Industry</h6>
+                    <small id="q_industry">Communication / Graphic Design, Service Design, UI Design</small>
+                </div>
+            </div> 
+        </section>
+    </div>
+    </body>
+     
+</html>

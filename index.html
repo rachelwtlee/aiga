@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Adventure Time</title>
+        <meta charset="utf-8">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+        <script type="text/javascript" src="js/jquery-3.4.0.min.js">
+        </script>
+        <script type="text/javascript" src="js/index.js"></script>
+    
+        <script>
+            $(document).ready(function() {
+                $("#id").click(function(){
+                    $("id").toggleClass('class');
+                })
+            })   
+           
+            window.onload = function() {
+                  window.setTimeout(intro1, 800);
+//                  window.setTimeout(intro2, 1600);
+                }
+
+            function intro1() {
+              document.getElementById('intro1').style.opacity = '1';
+            }
+//            
+//            function intro2() {
+//            document.getElementById('intro2').style.opacity = '1';
+//            }
+        </script> 
+    </head>
+
+    <div id="intro">
+       <div id="intro1">
+           <h2>What critical issues are facing design today?</h2>
+        </div>
+    </div>
+    
+   
+    <section class="landing_menu">
+        <h2 class="menu" id="quality"><a href="quality.html" onmouseover="landing_quality();" onmouseout="landing_quality2();">Quality</a></h2>
+       
+        <h2 class="menu" id="represent"><a href="represent.html" onmouseover="landing_represent();" 
+        onmouseout="landing_represent2();">Represent</a></h2>
+        
+        <h2 class="menu" id="learn"><a href="learn.html" onmouseover="landing_learn();" onmouseout="landing_learn2();">Learn</a></h2>
+        
+        <h2 class="menu" id="power"><a href="power.html" onmouseover="landing_power();" onmouseout="landing_power2();"><span class="hovertext"><p>key themes!</p></span>Power</a></h2>
+        
+        <h2 class="menu" id="social"><a href="social.html" onmouseover="landing_social();" onmouseout="landing_social2();">Social</a></h2>
+        
+        <h2 class="menu" id="change"><a href="change.html" onmouseover="landing_change();" onmouseout="landing_change2();">Change</a></h2>
+    </section>
+     
+</html>
