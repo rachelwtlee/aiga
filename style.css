@@ -620,17 +620,17 @@ section.magnified .bio, .about_bio {
     visibility: visible;
 }
 
-.bio div:first-child, .about_bio div:first-child {
+.bio #age, .about_bio #age {
     width: 12%;
     display: inline-block;
 }
 
-.bio div:nth-child(2), .bio div:nth-child(3), .about_bio div:nth-child(2), .about_bio div:nth-child(3) {
+.bio #identity, .bio #location, .about_bio #identity, .about_bio #location {
     width: 20%;
     display: inline-block;
 }
 
-.bio div:last-child, .about_bio div:last-child {
+.bio #industry, .about_bio #industry {
     width: 35%;
     display: inline-block;
 }
