@@ -507,10 +507,6 @@ h2#project_link:hover, h2#method_link:hover, h2#about_link:hover{
   text-decoration: none;
 }
 
-#close a:visited {
-    color: #000;
-}
-
 .section_intro h1 {
     font-family: 'principal_trialmedium';
     font-size: 14pt;
@@ -527,6 +523,11 @@ h2#project_link:hover, h2#method_link:hover, h2#about_link:hover{
 
 .section_intro a {
    text-decoration: none;
+    color: #000;
+}
+
+.section_intro a:visited {
+    color: #000;
 }
 
 .drag:hover {
